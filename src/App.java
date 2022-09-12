@@ -3,7 +3,6 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import org.w3c.dom.Text;
 
 public class App {
     static final String url = "jdbc:mysql://localhost:3306/vehicle?autoCorrect=true";
@@ -30,7 +29,7 @@ public class App {
                 while (max_ID.next()) {
                     String temp = max_ID.getString("maxID");
                     if (temp == null) {
-                        maxID = -1;
+                        maxID = 100;
                     } else {
                         maxID = Integer.parseInt(temp);
                     }
@@ -119,9 +118,6 @@ public class App {
 
             Statement current = conn.createStatement();
             try {
-                // String input_make, input_model;
-                // double input_Engine_Capacity, input_Price;
-                // int input_Year;
 
                 submit.addActionListener(e -> UpdateSql(inputMake.getText(), inputModel.getText(),
                         Double.parseDouble(inputEngineCapacity.getText()), Integer.parseInt(inputYear.getText()), Double.parseDouble(inputPrice.getText()),

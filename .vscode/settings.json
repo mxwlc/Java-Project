@@ -6,5 +6,31 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "c:\\Program Files (x86)\\MySQL\\Connector J 8.0\\mysql-connector-java-8.0.30.jar"
+    ],
+    "sqltools.connections": [
+        {
+            "name": "test",
+            "server": "localhost",
+            "driver": "MySQL",
+            "port": 3306,
+            "database": "vehicle",
+            "username": "root",
+            "askForPassword": false,
+            "password": "root",
+            "connectionTimeout": 15
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "username": "root",
+            "password": "root",
+            "database": "vehicles",
+            "name": "test"
+        }
     ]
 }

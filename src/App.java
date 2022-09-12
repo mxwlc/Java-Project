@@ -9,7 +9,7 @@ public class App {
     static final String user = "root";
     static final String password = "root";
     static int maxID;
-    static final int pad = 10;
+    static final int pad = 30;
 
     static String addRow(vehicle v, int id) {
         // "insert into cars values (id, 'make', 'model', engineCapacity,
@@ -66,7 +66,7 @@ public class App {
         border.setBorder(padding);
 
         frame.setIconImage(carIcon.getImage());
-        frame.setSize(700, 700);
+        frame.setSize(700, 350);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(border);
 
@@ -78,7 +78,7 @@ public class App {
         JLabel blank = new JLabel("");
         frame.getContentPane().add(blank);
 
-        JLabel makeLabel = new JLabel("Make:");
+        JLabel makeLabel = new JLabel("Make: ");
         frame.getContentPane().add(makeLabel);
 
         JTextField inputMake = new JTextField();

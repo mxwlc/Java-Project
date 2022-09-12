@@ -122,7 +122,7 @@ public class App {
                 submit.addActionListener(e -> UpdateSql(inputMake.getText(), inputModel.getText(),
                         Double.parseDouble(inputEngineCapacity.getText()), Integer.parseInt(inputYear.getText()), Double.parseDouble(inputPrice.getText()),
                         current));
-
+                
                 ResultSet rs = current.executeQuery("select max(id) as maxID from cars");
                 if(rs!=null){
                     while(rs.next()){

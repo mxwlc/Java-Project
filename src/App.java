@@ -1,10 +1,10 @@
 import java.sql.*;
-import java.util.Scanner;
 
 public class App {
     static final String url = "jdbc:mysql://localhost:3306/vehicle?autoCorrect=true";
     static final String user = "root";
     static final String password = "root";
+    static int maxID;
 
     static String addRow(vehicle v, int id) {
         // "insert into cars values (id, 'make', 'model', engineCapacity,
@@ -16,31 +16,26 @@ public class App {
         return sql;
     }
 
-    static vehicle createVehicle() {
-        String make, model;
-        int yearOfManufacture;
-        float engineCapacity, price;
+    static int findMaxID(Statement stmnt) {
+        try {
+            ResultSet max_ID = stmnt.executeQuery("select MAX(id) as maxID from cars");
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("Insert make");
-        make = input.nextLine();
+            if (max_ID != null) {
+                while (max_ID.next()) {
+                    String temp = max_ID.getString("maxID");
+                    if (temp == null) {
+                        maxID = -1;
+                    } else {
+                        maxID = Integer.parseInt(temp);
+                    }
+                }
 
-        System.out.println("Insert Model");
-        model = input.nextLine();
+            }
 
-        System.out.println("Insert Engine Capacity");
-        engineCapacity = Float.parseFloat(input.nextLine());
-
-        System.out.println("Insert Year of Manufacture");
-        yearOfManufacture = Integer.valueOf(input.nextLine());
-
-        System.out.println("Insert price");
-        price = Float.parseFloat(input.nextLine());
-
-        input.close();
-
-        vehicle v = new vehicle(make, model, engineCapacity, yearOfManufacture, price);
-        return v;
+            return maxID;
+        } catch (Exception e) {
+            throw new Error("Problem", e);
+        }
 
     }
 
@@ -51,10 +46,11 @@ public class App {
 
             Statement current = conn.createStatement();
             try {
-                vehicle v = createVehicle();
-                String sql = addRow(v, 0);
-                current.executeUpdate(sql);
+                maxID = findMaxID(current);
 
+                vehicle v = new vehicle("vauxhall", "Corsa", 3.5, 2004, 3500.99);
+                String sql = addRow(v, maxID + 1);
+                current.executeUpdate(sql);
 
             } catch (SQLException e) {
                 throw new Error("Problem", e);

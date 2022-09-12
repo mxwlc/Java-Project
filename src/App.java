@@ -59,14 +59,14 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         JFrame frame = new JFrame();
-        ImageIcon carIcon = new ImageIcon("src/car-icon-in-flat-style-simple-traffic-icon-free-vector.webp");
+        ImageIcon carIcon = new ImageIcon("src/car-xxl.png");
 
         JPanel border = new JPanel();
         Border padding = BorderFactory.createEmptyBorder(pad, pad, pad, pad);
         border.setBorder(padding);
 
         frame.setIconImage(carIcon.getImage());
-        frame.setSize(600, 600);
+        frame.setSize(700, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(border);
 
@@ -108,7 +108,7 @@ public class App {
         JTextField inputPrice = new JTextField();
         frame.getContentPane().add(inputPrice);
 
-        frame.setLayout(new GridLayout(10, 2));
+        frame.setLayout(new GridLayout(7, 2));
         frame.setVisible(true);
         JButton submit = new JButton("Submit");
         frame.getContentPane().add(submit);

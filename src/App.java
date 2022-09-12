@@ -33,9 +33,7 @@ public class App {
                         maxID = Integer.parseInt(temp);
                     }
                 }
-
             }
-
             return maxID;
         } catch (Exception e) {
             throw new Error("Problem", e);
@@ -120,7 +118,7 @@ public class App {
                     Double.parseDouble(inputEngineCapacity.getText()), Integer.parseInt(inputYear.getText()),
                     Double.parseDouble(inputPrice.getText()),
                     current));
-            
+
         } catch (SQLException e) {
             throw new Error("Problem", e);
         }

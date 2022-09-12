@@ -1,7 +1,8 @@
 public class vehicle {
     private String make, model;
-    private int engineCapacity, yearOfManufacture, price;
-
+    private int yearOfManufacture;
+    private float engineCapacity, price;
+    
     public vehicle() {
         this.make = "";
         this.model = "";
@@ -10,7 +11,7 @@ public class vehicle {
         this.yearOfManufacture = 0;
     }
 
-    public vehicle(String make, String model, int engineCapacity, int yearOfManufacture, int price) {
+    public vehicle(String make, String model, float engineCapacity, int yearOfManufacture, float price) {
         this.make = make;
         this.model = model;
         this.engineCapacity = engineCapacity;
@@ -34,11 +35,11 @@ public class vehicle {
         this.model = model;
     }
 
-    public int getengineCapacity() {
+    public float getengineCapacity() {
         return this.engineCapacity;
     }
 
-    public void setengineCapacity(int engineCapacity) {
+    public void setengineCapacity(float engineCapacity) {
         this.engineCapacity = engineCapacity;
     }
 
@@ -50,11 +51,11 @@ public class vehicle {
         this.yearOfManufacture = yearOfManufacture;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return this.price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
    

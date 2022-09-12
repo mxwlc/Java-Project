@@ -1,6 +1,5 @@
 import java.sql.*;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class App {
     static final String url = "jdbc:mysql://localhost:3306/vehicle?autoCorrect=true";
@@ -9,7 +8,7 @@ public class App {
 
     static String addRow(vehicle v, int id) {
         // "insert into cars values (id, 'make', 'model', engineCapacity,
-        // yearOfManufacture, price)"
+        // yearOfManufacture, price)
         String sql;
         String start = "insert into cars values( ";
         sql = start + id + ", '" + v.getMake() + "', '" + v.getModel() + "', "
@@ -19,7 +18,8 @@ public class App {
 
     static vehicle createVehicle() {
         String make, model;
-        int engineCapacity, yearOfManufacture, price;
+        int yearOfManufacture;
+        float engineCapacity, price;
 
         Scanner input = new Scanner(System.in);
         System.out.println("Insert make");
@@ -29,13 +29,13 @@ public class App {
         model = input.nextLine();
 
         System.out.println("Insert Engine Capacity");
-        engineCapacity = Integer.valueOf(input.nextLine());
+        engineCapacity = Float.parseFloat(input.nextLine());
 
         System.out.println("Insert Year of Manufacture");
         yearOfManufacture = Integer.valueOf(input.nextLine());
 
         System.out.println("Insert price");
-        price = Integer.valueOf(input.nextLine());
+        price = Float.parseFloat(input.nextLine());
 
         input.close();
 
@@ -51,22 +51,10 @@ public class App {
 
             Statement current = conn.createStatement();
             try {
-                ArrayList<cardict> cars = new ArrayList<cardict>();
-                for(int i = 0; i < 5; i++){
-                    vehicle v;
-                    v = createVehicle();
+                vehicle v = createVehicle();
+                String sql = addRow(v, 0);
+                current.executeUpdate(sql);
 
-                    cardict a = new cardict(v, i);
-                    cars.add(a);
-                }                
-
-
-
-
-
-                vehicle newCar1 = new vehicle("Vauxhall", "Corsa", 200, 2004, 3000);
-                System.out.print(addRow(newCar1, 0));
-                current.executeUpdate("insert into cars values (1, 'Vauxhall', 'Corsa', 200, 2004, 300)");
 
             } catch (SQLException e) {
                 throw new Error("Problem", e);

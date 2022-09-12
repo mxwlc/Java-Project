@@ -3,7 +3,6 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-
 public class App {
     static final String url = "jdbc:mysql://localhost:3306/vehicle?autoCorrect=true";
     static final String user = "root";
@@ -49,7 +48,7 @@ public class App {
             vehicle tempV = new vehicle(ma, mo, ec, ye, pr);
             int maxID = findMaxID(curr) + 1;
             String sql = addRow(tempV, maxID);
-            
+
             curr.executeUpdate(sql);
         } catch (Exception e) {
             throw new Error("Problem", e);
@@ -117,22 +116,11 @@ public class App {
             Connection conn = DriverManager.getConnection(url, user, password);
 
             Statement current = conn.createStatement();
-            try {
-
-                submit.addActionListener(e -> UpdateSql(inputMake.getText(), inputModel.getText(),
-                        Double.parseDouble(inputEngineCapacity.getText()), Integer.parseInt(inputYear.getText()), Double.parseDouble(inputPrice.getText()),
-                        current));
-                
-                ResultSet rs = current.executeQuery("select max(id) as maxID from cars");
-                if(rs!=null){
-                    while(rs.next()){
-                        System.out.print(rs.getString("maxID"));
-                    }
-                }
-
-            } catch (SQLException e) {
-                throw new Error("Problem", e);
-            }
+            submit.addActionListener(e -> UpdateSql(inputMake.getText(), inputModel.getText(),
+                    Double.parseDouble(inputEngineCapacity.getText()), Integer.parseInt(inputYear.getText()),
+                    Double.parseDouble(inputPrice.getText()),
+                    current));
+            
         } catch (SQLException e) {
             throw new Error("Problem", e);
         }

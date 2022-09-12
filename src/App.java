@@ -51,15 +51,13 @@ public class App {
 
             Statement current = conn.createStatement();
             try {
-                ArrayList<arrayentry> cars = new ArrayList<arrayentry>();
+                ArrayList<cardict> cars = new ArrayList<cardict>();
                 for(int i = 0; i < 5; i++){
                     vehicle v;
                     v = createVehicle();
 
-                    arrayentry a = new arrayentry(v,i);
-
-
-
+                    cardict a = new cardict(v, i);
+                    cars.add(a);
                 }                
 
 

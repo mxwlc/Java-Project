@@ -1,12 +1,14 @@
-public class arrayentry {
+public class cardict {
     vehicle v;
     int id;
 
 
-    public arrayentry() {
+    public cardict() {
+        v = new vehicle();
+        id = 0;
     }
 
-    public arrayentry(vehicle v, int id) {
+    public cardict(vehicle v, int id) {
         this.v = v;
         this.id = id;
     }

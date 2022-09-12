@@ -29,7 +29,7 @@ public class App {
                 while (max_ID.next()) {
                     String temp = max_ID.getString("maxID");
                     if (temp == null) {
-                        maxID = 100;
+                        maxID = 99;
                     } else {
                         maxID = Integer.parseInt(temp);
                     }
